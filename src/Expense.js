@@ -31,7 +31,7 @@ class expenses extends Component {
             categories: [],
             expenses: [],
             date: new Date(),
-            item: this.emptyItem,
+            item: this.emptyItem
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
