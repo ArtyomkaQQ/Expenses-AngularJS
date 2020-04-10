@@ -14,7 +14,6 @@ import { Link, withRouter } from 'react-router-dom';
 
 class ExpenseEdit extends Component {
     emptyItem = {
-        id: '',
         description: '',
         category: 'Food',
         expensedate: new Date(),
@@ -49,7 +48,7 @@ class ExpenseEdit extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         const {item, csrfToken} = this.state;
-        item.id = this.props.match.params.id
+        item.id = this.props.match.params.id;
 
         await fetch('/api/expense/' + this.props.match.params.id, {
           method: 'PUT',
@@ -65,12 +64,6 @@ class ExpenseEdit extends Component {
         this.props.history.push('/expenses');
     }
 
-    handleDateChange(date) {
-        let item = { ...this.state.item };
-        item.expenseDate = date;
-        this.setState({ item });
-    }
-
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -79,6 +72,12 @@ class ExpenseEdit extends Component {
         item[name] = value;
         this.setState({ item });
         console.log(item);
+    }
+
+    handleDateChange(date) {
+        let item = { ...this.state.item };
+        item.expenseDate = date;
+        this.setState({ item });
     }
 
     async remove(id) {

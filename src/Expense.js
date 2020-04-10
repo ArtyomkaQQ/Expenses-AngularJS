@@ -17,7 +17,6 @@ import Moment from "react-moment";
 
 class expenses extends Component {
     emptyItem = {
-        id: 104,
         description: '',
         category: 'Food',
         expensedate: new Date(),
@@ -67,12 +66,6 @@ class expenses extends Component {
         this.props.history.push("/expenses");
     }
 
-    handleDateChange(date) {
-        let item = { ...this.state.item };
-        item.expenseDate = date;
-        this.setState({ item });
-    }
-
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -81,6 +74,12 @@ class expenses extends Component {
         item[name] = value;
         this.setState({ item });
         console.log(item);
+    }
+
+    handleDateChange(date) {
+        let item = { ...this.state.item };
+        item.expenseDate = date;
+        this.setState({ item });
     }
 
     async remove(id) {
